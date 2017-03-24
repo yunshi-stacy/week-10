@@ -1,4 +1,4 @@
-# Week 10, Lab 1 — Introduction to Carto
+# Week 10, Lab 2 — Introduction to Carto
 
 ## Task
 
