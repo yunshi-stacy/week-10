@@ -22,7 +22,7 @@
 
 ### Frontend Frameworks
 - [Lab](lab/lab1)
-### Frontend Frameworks
+### Carto
 - [Lab](lab/lab2)
 
 ## Homework Assignment (Due: Wednesday, March 29)
