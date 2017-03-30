@@ -1,68 +1,197 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta charset="utf-8">
-    <!-- CSS Imports -->
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/leaflet.css" />
-    <!-- Choose a frontend framework CSS file: -->
-    <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
-    <!-- <link rel="stylesheet" href="css/material.css" /> -->
-    <!-- <link rel="stylesheet" href="css/assembly.css" /> -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid clearfix">
-          <div class="topright-button" style="float: right">
-            [Add New]
-          </div>
-          <div class="navbar-header">
-            <a href="#">Manufacturers</a>
-          </div>
-        </div>
-      </nav>
-      <div class="item">
-        <h2 class="item-heading">Tandy’s Basketweavers</h2>
-        <div>490 Freedom Drive<br>
-        Philadelphia, PA 19425</div>
-      </div>
-      <div class="item">
-        <h2 class="item-heading">Basket Case</h2>
-        <div>400 S 46th Street<br>
-        Philadelphia, PA 19144</div>
-      </div>
-      <div class="item">
-        <h2 class="item-heading">Bas-kids: Baskets 4 Kids</h2>
-        <div>2558 Walnut Street<br>
-        Philadelphia, PA 19107</div>
-      </div>
-      <div class="item">
-        <h2 class="item-heading">Bask in the Glory</h2>
-        <div>2501 Walnut Street<br>
-        Philadelphia, PA 19107</div>
-      </div>
-      <div class="item">
-        <h2 class="item-heading">Basket Ball</h2>
-        <div>2542 Walnut Street<br>
-        Philadelphia, PA 19107</div>
-      </div>
-      <div class="sort">
-        Sort by <span class="sort-option selected">A–Z</span> <span class="sort-option">Inventory</span>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS Imports -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <!-- Choose a frontend framework CSS file: -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="css/material.css" /> -->
+  <!-- <link rel="stylesheet" href="css/assembly.css" /> -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="span2">
+        <ul class="nav nav-pills nav-stacked">
+          <img src="./js/images/shopping-basket.svg" style="height: 10vh; margin: 20px">
+          <li role="separator" class="divider" style="height:1px; background-color: white"></li>
+          <li>
+            <a href="#">
+              <span class="glyphicon glyphicon-map-marker" style="color: white; margin: 0.25em"></span>
+              Manufactures
+            </a>
+          </li>
+          <li><a href="#">
+            <span class="glyphicon glyphicon-tag" style="color: white; margin: 0.25em"></span>Purchases</a>
+          </li>
+          <li><a href="#">
+            <span class="glyphicon glyphicon-info-sign" style="color: white; margin: 0.25em"></span>Basket Secrets</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <!-- Map -->
-    <div id="map" class="map"></div>
-    <!-- Javascript Imports -->
-    <script src="js/jquery-2.2.0.js"></script>
-    <script src="js/leaflet.js"></script>
-    <!-- Choose a frontend framework Javascript file: -->
-    <!-- <script src="js/bootstrap.js"></script> -->
-    <!-- <script src="js/material.js"></script> -->
-    <!-- <script src="js/assembly.js"></script>  -->
-    <script src="js/setup.js"></script>
-  </body>
-</html>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div>
+        <nav class="navbar navbar-default" style="display: inline-flex; left: 20px; width: 30vw; height: 5vh" >
+          <div class="navbar-header" style="width: 30vw">
+            <a href="#" style="float: left">Manufacturers</a>
+            <div class="dropdown" style="max-width: 26vw" >
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="float: right">
+                Add New
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                <li><a href="#">View History</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Email All Manufactures</a></li>
+              </ul>
+            </div>
+          </div><!-- navbar-header -->
+        </nav>
+      </div>
+
+      <div style="max-height: 83vh; max-width: 27vw">
+        <div class="input-group"  style="margin-top: 6vh">
+          <input type="text" class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-info">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div><!-- /input-group -->
+        <div class="item"  style="margin-top: -9vh">
+          <h2 class="item-heading">Tandy’s Basketweavers</h2>
+          <div>490 Freedom Drive<br>
+            Philadelphia, PA 19425
+          </div>
+          <!-- <span style="width: 7em; padding: 0.25em; background-color: #e55757; color: white">Lower Inventory</span> -->
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 8em; padding: 0.25em; background-color: #e55757; color: white; font-size: small; border-color: transparent; border-radius: 2px">Low Inventory</button>
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content" style="height: 72vh">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Manufacturer</h4>
+                </div>
+                <div class="modal-body">
+                  <p  style="background: #e55757; color: white; padding: 0.25em">This manufacturer has low inventory.</p>
+                  <div>
+                    <div class='row'>
+                      <div class='col-md-6'>
+                        <h3 style="margin: 0">Tandy's Basketweavers</h3>
+                      </div>
+                      <div class='col-md-6'>
+                        <div class="btn-group" role="group" aria-label="..." style="float: right">
+                          <button type="button" class="btn btn-default">Edit</button>
+                          <button type="button" class="btn btn-default">Delete</button>
+                          <button type="button" class="btn btn-default">Export</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="col-md-3">
+                    <h4>Address</h4>
+                    <p>
+                      490 Freedom Drive
+                      <br />
+                      Philadelphia, PA 19425
+                    </p>
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Contact</h4>
+                    <P>
+                      Dave Javies
+                      <br />
+                      Senior Weaver
+                      <br />
+                      dj@tbw.com
+                      <br />
+                    </P>
+                  </div>
+                  <div class="col-md-6">
+                    <p style="font-size: 5em; text-align: center; color:#00bcd4">324</p>
+                    <p>Baskets sold in past last 7 days</p>
+                  </div>
+
+                  <hr style="left: 0; width: 100%"/>
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Purchase</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>John Basket</td>
+                      </tr>
+                      <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>Mary Basket</td>
+                      </tr>
+                      <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                        <td>July Basket</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h2 class="item-heading">Basket Case</h2>
+          <div>400 S 46th Street<br>
+            Philadelphia, PA 19144</div>
+          </div>
+          <div class="item">
+            <h2 class="item-heading">Bas-kids: Baskets 4 Kids</h2>
+            <div>2558 Walnut Street<br>
+              Philadelphia, PA 19107</div>
+            </div>
+            <div class="item">
+              <h2 class="item-heading">Bask in the Glory</h2>
+              <div>2501 Walnut Street<br>
+                Philadelphia, PA 19107</div>
+              </div>
+              <div class="item">
+                <h2 class="item-heading">Basket Ball</h2>
+                <div>2542 Walnut Street<br>
+                  Philadelphia, PA 19107</div>
+                </div>
+              </div>
+              <div style="bottom: 1vh; position: absolute">
+                Sort by <span class="sort-option selected">A–Z</span> <span class="sort-option">Inventory</span>
+              </div>
+            </div>
+            <!-- Map -->
+            <div id="map" class="map"></div>
+            <!-- Javascript Imports -->
+            <script src="js/jquery-2.2.0.js"></script>
+            <script src="js/leaflet.js"></script>
+            <!-- Choose a frontend framework Javascript file: -->
+            <script src="js/bootstrap.js"></script>
+            <!-- <script src="js/material.js"></script> -->
+            <!-- <script src="js/assembly.js"></script>  -->
+            <script src="js/setup.js"></script>
+          </body>
+          </html>

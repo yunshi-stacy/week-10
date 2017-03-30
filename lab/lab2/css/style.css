@@ -68,3 +68,8 @@ body {
     font-size: 14px;
     font-weight: bold;
 }
+
+path {
+  stroke-width: 0;
+  fill: #42b6c0;
+}

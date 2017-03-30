@@ -3,19 +3,37 @@ body {
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+.navbar {
+  font-size: 1.2em;
+  position: absolute;
+  background-color: #27333f;
+  left:0;
+  width: 20vw;
+  height: 100vh;
+}
+
+.navbar > div > ul > li> a {
+  color: white
+}
+
+.navbar > div > ul > li> a:hover, a:focus{
+  background-color: #4b9caf;
+  color: black
+}
 
 .map {
     position: absolute;
     right: 0px;
-    left: 340px;
+    left: 50vw;
+
     height: 100%;
     top: 0;
 }
 
 .sidebar {
     position: absolute;
-    left: 0px;
-    width: 340px;
+    left: 20vw;
+    width: 30vw;
     top: 0;
     bottom: 0;
     overflow-y: auto;
@@ -24,6 +42,8 @@ body {
 }
 
 .item {
+    position: relative;
+    top: 10vh;
     padding: 10px;
     background-color: #eee;
 }
@@ -39,7 +59,7 @@ body {
 }
 
 .sort {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 340px;
@@ -74,12 +94,24 @@ Media Queries
 ============= */
 
 @media screen and (min-width: 480px) and (max-width: 800px) {
+  .sidebar{
+    width: 20vw
+  }
+
+  .map{
+    left: 40vw;
+    width: 60vw
+  }
     /*.item {
         background-color: blue;
     }*/
 }
 
 @media screen and (max-width: 479px) {
+  .map{
+    left: 0;
+    width: 100vw;
+  }
     /*.item {
         background-color: red;
     }*/
